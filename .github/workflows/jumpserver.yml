@@ -26,14 +26,14 @@ jobs:
           docker pull jumpserver/jms_chen:${version}
           docker pull jumpserver/jms_web:${version}
 
-          docker tag jumpserver/jms_core:${version} registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_core:${version}
-          docker tag jumpserver/jms_koko:${version} registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_koko:${version}
-          docker tag jumpserver/jms_lion:${version} registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_lion:${version}
-          docker tag jumpserver/jms_chen:${version} registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_chen:${version}
-          docker tag jumpserver/jms_web:${version} registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_web:${version}
+          docker tag jumpserver/jms_core:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_core:${version}
+          docker tag jumpserver/jms_koko:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_koko:${version}
+          docker tag jumpserver/jms_lion:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_lion:${version}
+          docker tag jumpserver/jms_chen:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_chen:${version}
+          docker tag jumpserver/jms_web:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_web:${version}
 
-          docker push registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_core:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_koko:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_lion:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_chen:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/${DOCKER_USERNAME}/jms_web:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_core:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_koko:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_lion:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_chen:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_web:${version}
