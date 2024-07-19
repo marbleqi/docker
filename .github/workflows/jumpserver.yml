@@ -19,24 +19,15 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
       - name: 拉取堡垒机相关镜像并推送到阿里云个人仓库
         run: |
-          version=v4.0.0
-          docker pull jumpserver/jms_core:${version}
-          docker pull jumpserver/jms_koko:${version}
-          docker pull jumpserver/guacd:1.5.5-bookworm
-          docker pull jumpserver/jms_lion:${version}
-          docker pull jumpserver/jms_chen:${version}
-          docker pull jumpserver/jms_web:${version}
+          docker pull postgres:16.3
+          docker pull postgres:15.7
+          docker pull postgres:14.12
 
-          docker tag jumpserver/jms_core:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_core:${version}
-          docker tag jumpserver/jms_koko:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_koko:${version}
-          docker tag jumpserver/guacd:1.5.5-bookworm registry.cn-wulanchabu.aliyuncs.com/marbleqi/guacd:1.5.5-bookworm
-          docker tag jumpserver/jms_lion:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_lion:${version}
-          docker tag jumpserver/jms_chen:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_chen:${version}
-          docker tag jumpserver/jms_web:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_web:${version}
+          docker tag postgres:16.3 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:16.3
+          docker tag postgres:15.7 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:15.7
+          docker tag postgres:14.12 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:14.12
 
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_core:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_koko:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/guacd:1.5.5-bookworm
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_lion:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_chen:${version}
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_web:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:16.3
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:15.7
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:14.12
+
