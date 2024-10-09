@@ -1,0 +1,42 @@
+name: 制作镜像并推送到私有仓库
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 登陆阿里云镜像仓库
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
+      - name: 拉取堡垒机相关镜像并推送到阿里云个人仓库
+        run: |
+          docker pull postgres:17.0
+          docker pull postgres:16.4
+          docker pull postgres:15.8
+          docker pull postgres:14.13
+          docker pull postgres:13.16
+          docker pull postgres:12.20
+
+          docker tag postgres:17.0 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:17.0
+          docker tag postgres:16.4 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:16.4
+          docker tag postgres:15.8 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:15.8
+          docker tag postgres:14.13 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:14.13
+          docker tag postgres:13.16 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:13.16
+          docker tag postgres:12.20 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:12.20
+
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:17.0
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:16.4
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:15.8
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:14.13
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:13.16
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:12.20
+
