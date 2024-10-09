@@ -19,7 +19,7 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
       - name: 拉取堡垒机相关镜像并推送到阿里云个人仓库
         run: |
-          version=v4.2.0
+          version=v4.0.2
           docker pull jumpserver/jms_core:${version}
           docker pull jumpserver/jms_koko:${version}
           docker pull jumpserver/guacd:1.5.5-bookworm
