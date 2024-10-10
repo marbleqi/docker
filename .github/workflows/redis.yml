@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      - '.github/workflows/redis.yml'
+    
 jobs:
   build:
     runs-on: ubuntu-latest
