@@ -19,9 +19,22 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
       - name: 拉取堡垒机官方镜像重命名后推送到阿里云个人仓库
         run: |
-          version=v4.2.0
-          docker pull jumpserver/jms_all:${version}
+          version=v4.2.0-ce
+          
+          docker pull jumpserver/core:${version}
+          docker pull jumpserver/koko:${version}
+          docker pull jumpserver/lion:${version}
+          docker pull jumpserver/chen:${version}
+          docker pull jumpserver/web:${version}
 
-          docker tag jumpserver/jms_all:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_all:${version}
+          docker tag jumpserver/core:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-core:${version}
+          docker tag jumpserver/koko:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-koko:${version}
+          docker tag jumpserver/lion:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-lion:${version}
+          docker tag jumpserver/chen:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-chen:${version}
+          docker tag jumpserver/web:${version} registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-web:${version}
 
-          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms_all:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-core:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-koko:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-lion:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-chen:${version}
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/jms-web:${version}
