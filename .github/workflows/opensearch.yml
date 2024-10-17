@@ -1,4 +1,4 @@
-name: gitlab官方镜像转存
+name: opensearch官方镜像转存
 
 on:
   push:
