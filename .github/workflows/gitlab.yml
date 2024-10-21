@@ -19,10 +19,13 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
-      - name: 拉取mysql官方镜像重命名后推送到阿里云个人仓库
+      - name: 拉取gitlab官方镜像重命名后推送到阿里云个人仓库
         run: |
+          docker pull gitlab/gitlab-ce:latest
           docker pull gitlab/gitlab-runner
 
+          docker tag gitlab/gitlab-ce:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/gitlab-ce
           docker tag gitlab/gitlab-runner registry.cn-wulanchabu.aliyuncs.com/marbleqi/gitlab-runner
 
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/gitlab-ce
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/gitlab-runner

@@ -19,7 +19,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
-      - name: 拉取redis官方镜像重命名后推送到阿里云个人仓库
+      - name: 拉取logstash官方镜像重命名后推送到阿里云个人仓库
         run: |
           docker pull logstash:8.15.3
 
