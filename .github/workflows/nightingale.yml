@@ -1,0 +1,40 @@
+name: nightingale官方镜像转存
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/nightingale.yml'
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 登陆阿里云镜像仓库
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-wulanchabu.aliyuncs.com
+      - name: 拉取elasticsearch官方镜像重命名后推送到阿里云个人仓库
+        run: |
+          docker pull postgres:12
+          docker pull redis:7
+          docker pull victoriametrics/victoria-metrics:v1.79.12
+          docker pull flashcatcloud/nightingale:latest
+          docker pull flashcatcloud/categraf:latest
+
+          docker tag postgres:12 registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:12
+          docker tag redis:7 registry.cn-wulanchabu.aliyuncs.com/marbleqi/redis:7
+          docker tag victoriametrics/victoria-metrics:v1.79.12 registry.cn-wulanchabu.aliyuncs.com/marbleqi/victoria-metrics:v1.79.12
+          docker tag flashcatcloud/nightingale:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/nightingale:latest
+          docker tag flashcatcloud/categraf:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/flashcatcloud/categraf:latest
+
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:12
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/redis:7
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/victoria-metrics:v1.79.12
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/nightingale:latest
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/categraf:latest
