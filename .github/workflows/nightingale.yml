@@ -31,7 +31,7 @@ jobs:
           docker tag redis:7 registry.cn-wulanchabu.aliyuncs.com/marbleqi/redis:7
           docker tag victoriametrics/victoria-metrics:v1.79.12 registry.cn-wulanchabu.aliyuncs.com/marbleqi/victoria-metrics:v1.79.12
           docker tag flashcatcloud/nightingale:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/nightingale:latest
-          docker tag flashcatcloud/categraf:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/flashcatcloud/categraf:latest
+          docker tag flashcatcloud/categraf:latest registry.cn-wulanchabu.aliyuncs.com/marbleqi/categraf:latest
 
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/postgres:12
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/redis:7
