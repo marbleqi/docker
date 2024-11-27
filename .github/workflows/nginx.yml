@@ -22,7 +22,10 @@ jobs:
       - name: 拉取nginx官方镜像重命名后推送到阿里云个人仓库
         run: |
           docker pull nginx
+          docker pull nginx:alpine
 
           docker tag nginx registry.cn-wulanchabu.aliyuncs.com/marbleqi/nginx
+          docker tag nginx:alpine registry.cn-wulanchabu.aliyuncs.com/marbleqi/nginx:alpine
 
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/nginx
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/nginx:alpine
