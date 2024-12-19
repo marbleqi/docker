@@ -23,12 +23,15 @@ jobs:
         run: |
           docker pull node:16
           docker pull node:18
+          docker pull node:18.16.1
           docker pull node:20
 
           docker tag node:16 registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:16
           docker tag node:18 registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:18
+          docker tag node:18.16.1 registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:18.16.1
           docker tag node:20 registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:20
 
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:16
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:18
+          docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:18.16.1
           docker push registry.cn-wulanchabu.aliyuncs.com/marbleqi/node:20
